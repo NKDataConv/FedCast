@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "FedCast"
+version = "0.1.0"
+description = ""
+authors = []
+license = "Apache-2.0"
+packages = [{include = "fedcast"}]
+
+[tool.poetry.dependencies]
+python = "<=3.13.2,>=3.9.2"
+flwr = {version = "^1.18.0", extras = ["simulation"]}
+flwr-datasets = "^0.5.0"
+pandas = "^2.2.3"
+torch = "^2.3"
+torchvision = "*"
+datasets = "^3.1.0"
+
+tensorflow = "^2.15"
+tensorflow-metal = {version = "^1.1.0", markers = "sys_platform == 'darwin' and platform_machine == 'arm64'"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
