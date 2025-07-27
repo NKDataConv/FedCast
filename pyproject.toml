@@ -15,6 +15,7 @@ torch = "^2.3"
 torchvision = "*"
 datasets = "^3.1.0"
 wfdb = "^4.1.2"
+yfinance = "^0.2.40"
 
 tensorflow = "^2.15"
 tensorflow-metal = {version = "^1.1.0", markers = "sys_platform == 'darwin' and platform_machine == 'arm64'"}
