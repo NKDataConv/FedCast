@@ -75,3 +75,9 @@ def load_dataset(partition_id: int, num_examples: int = 500):
     # 5. Convert to a Hugging Face Dataset.
     dataset = Dataset.from_pandas(df)
     return dataset
+
+
+if __name__ == "__main__":
+    dataset = load_dataset(0)
+    print(dataset)
+    print(dataset[0])
