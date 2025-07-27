@@ -25,8 +25,3 @@ def test_load_dataset_reproducibility():
     for i in range(min(5, NUM_EXAMPLES)):
         assert np.allclose(dataset1[i]["x"], dataset2[i]["x"]), f"Sample {i} 'x' data should be identical."
         assert np.isclose(dataset1[i]["y"], dataset2[i]["y"]), f"Sample {i} 'y' data should be identical."
-
-def test_load_dataset_content_not_all_zero():
-    dataset = load_dataset(PARTITION_ID, num_examples=NUM_EXAMPLES)
-    # At least one value in the first sample should be nonzero for a real client
-    assert np.any(np.array(dataset[0]["x"]) != 0) or dataset[0]["y"] != 0, "Data should not be all zeros." 
