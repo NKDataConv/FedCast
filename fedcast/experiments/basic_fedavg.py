@@ -11,26 +11,14 @@ from fedcast.telemetry.mlflow_logger import (
     log_history_artifact,
     MLflowLoggingStrategy,
 )
-
-# Define the neural network model
-class Net(nn.Module):
-    def __init__(self):
-        super(Net, self).__init__()
-        self.fc1 = nn.Linear(WINDOW_SIZE, 64)
-        self.fc2 = nn.Linear(64, 32)
-        self.fc3 = nn.Linear(32, 1)
-
-    def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = torch.relu(self.fc2(x))
-        x = self.fc3(x)
-        return x
+from fedcast.cast_models import MLPModel, LinearModel
+from flwr.common import Context
 
 # Define the Flower client
 class SinusClient(fl.client.NumPyClient):
-    def __init__(self, cid: str):
+    def __init__(self, cid: str, model_builder):
         self.cid = int(cid)
-        self.net = Net()
+        self.net = model_builder()
         self.trainloader = None
         self.valloader = None
 
@@ -84,9 +72,12 @@ class SinusClient(fl.client.NumPyClient):
         
         return loss / len(valloader), len(valloader.dataset), {"mse": loss}
 
-def client_fn(cid: str) -> fl.client.Client:
-    """Create a Flower client-side client."""
-    return SinusClient(cid=cid).to_client()
+def make_client_fn(model_builder):
+    def _client_fn(context: Context) -> fl.client.Client:
+        # New Flower signature expects Context. Use node_id as cid.
+        cid = str(getattr(context, "node_id", "0"))
+        return SinusClient(cid=cid, model_builder=model_builder).to_client()
+    return _client_fn
 
 # Define the strategy
 base_strategy = fl.server.strategy.FedAvg(
@@ -98,25 +89,31 @@ base_strategy = fl.server.strategy.FedAvg(
 )
 strategy = MLflowLoggingStrategy(base_strategy)
 
-# Start the simulation
-if __name__ == "__main__":
+def run_experiment_for_model(model_name: str, model_builder) -> None:
     mlf_cfg = MLflowConfig(
         experiment_name="FedCast",
-        run_name="basic_fedavg",
-        tags={"strategy": "FedAvg", "dataset": "sinus"},
+        run_name=f"basic_fedavg_{model_name}",
+        tags={"strategy": "FedAvg", "dataset": "sinus", "model": model_name},
     )
     with start_run(mlf_cfg):
         log_params({
             "strategy": "FedAvg",
             "num_rounds": 3,
             "num_clients": 2,
-            "model": "MLP",
+            "model": model_name,
         })
         history = fl.simulation.start_simulation(
-            client_fn=client_fn,
+            client_fn=make_client_fn(model_builder),
             num_clients=2,
             config=fl.server.ServerConfig(num_rounds=3),
             strategy=strategy,
         )
         log_history_artifact(history)
+
+
+# Start the simulation
+if __name__ == "__main__":
+    # Run experiments for both models separately
+    run_experiment_for_model("MLP", MLPModel)
+    run_experiment_for_model("Linear", LinearModel)
         
