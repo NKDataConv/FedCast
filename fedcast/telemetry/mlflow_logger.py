@@ -133,15 +133,31 @@ class MLflowLoggingStrategy:
     Works with any strategy implementing `aggregate_fit` and `aggregate_evaluate`.
     """
 
-    def __init__(self, base_strategy: Any, metric_prefix: str = "server.") -> None:
+    def __init__(self, base_strategy: Any, metric_prefix: str = "server.", dataset_name: Optional[str] = None) -> None:
         self.base_strategy = base_strategy
         self.metric_prefix = metric_prefix
+        self.dataset_name = dataset_name
+        self._metadata_logged = False
+
+    def _log_metadata_once(self) -> None:
+        if self._metadata_logged:
+            return
+        try:
+            params = {"strategy_name": type(self.base_strategy).__name__}
+            if self.dataset_name:
+                params["dataset"] = self.dataset_name
+            log_params(params)
+        except Exception:
+            pass
+        self._metadata_logged = True
 
     # Delegate all unknown attributes/methods to base strategy
     def __getattr__(self, name: str) -> Any:
         return getattr(self.base_strategy, name)
 
     def aggregate_fit(self, server_round: int, results: Any, failures: Any):
+        # Ensure run-level metadata is logged once
+        self._log_metadata_once()
         aggregated_result = self.base_strategy.aggregate_fit(server_round, results, failures)
         # aggregated_result is (parameters, metrics)
         try:
@@ -155,6 +171,8 @@ class MLflowLoggingStrategy:
         return aggregated_result
 
     def aggregate_evaluate(self, server_round: int, results: Any, failures: Any):
+        # Ensure run-level metadata is logged once
+        self._log_metadata_once()
         aggregated_result = self.base_strategy.aggregate_evaluate(server_round, results, failures)
         # aggregated_result is (loss, metrics)
         try:

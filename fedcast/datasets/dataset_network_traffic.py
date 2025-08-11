@@ -49,6 +49,25 @@ TRAFFIC_CATEGORIES = [
     'Worms'
 ]
 
+
+def _normalize_attack_categories(series: pd.Series) -> pd.Series:
+    """Normalize attack category labels from UNSW-NB15 to canonical names.
+
+    - Strips whitespace
+    - Maps known variants/sentinels (e.g., '0' -> 'Normal', 'Backdoor' -> 'Backdoors')
+    - Replaces empty and NaN-like strings with 'Normal'
+    """
+    s = series.astype(str).str.strip()
+    mapping = {
+        "": "Normal",
+        "nan": "Normal",
+        "NaN": "Normal",
+        "0": "Normal",
+        "Backdoor": "Backdoors",
+    }
+    s = s.replace(mapping)
+    return s
+
 def get_traffic_categories() -> List[str]:
     """
     Get the list of available network traffic categories.
@@ -133,11 +152,7 @@ def _download_and_cache_data() -> Path:
         
         # Ensure we have attack categories
         if 'attack_cat' in combined_df.columns:
-            # Convert all values to string first
-            combined_df['attack_cat'] = combined_df['attack_cat'].astype(str)
-            # Replace empty strings and 'nan' with 'Normal'
-            combined_df['attack_cat'] = combined_df['attack_cat'].replace(['', 'nan', 'NaN'], 'Normal')
-            combined_df['attack_cat'] = combined_df['attack_cat'].fillna('Normal')
+            combined_df['attack_cat'] = _normalize_attack_categories(combined_df['attack_cat']).fillna('Normal')
         else:
             # If no attack_cat column, create one based on label
             combined_df['attack_cat'] = combined_df.get('label', 0).apply(
@@ -179,6 +194,8 @@ def _load_traffic_data(category: str) -> pd.DataFrame:
     
     # Load the full dataset
     df = pd.read_csv(data_file)
+    if 'attack_cat' in df.columns:
+        df['attack_cat'] = _normalize_attack_categories(df['attack_cat']).fillna('Normal')
     
     # Filter for the specific category
     category_df = df[df['attack_cat'] == category].copy()

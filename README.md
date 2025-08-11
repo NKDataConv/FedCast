@@ -44,6 +44,13 @@ poetry run pytest
 
 This will automatically discover and run all tests located in the `tests/` directory.
 
+
+## Run MLFlow UI:
+```bash
+mlflow ui --host 127.0.0.1 --port 5000
+````
+
+
 ## Supporters
 
 This project is supported by the German Federal Ministry of Education and Research (BMBF). We are grateful for their support, without which this project would not be possible.

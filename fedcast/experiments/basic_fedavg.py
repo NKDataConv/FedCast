@@ -5,14 +5,15 @@ from torch.utils.data import DataLoader
 from collections import OrderedDict
 from fedcast.datasets.dataset_sinus import load_dataset, WINDOW_SIZE
 from fedcast.telemetry.mlflow_logger import (
+    MLflowLoggingStrategy,
     MLflowConfig,
     start_run,
     log_params,
     log_history_artifact,
-    MLflowLoggingStrategy,
 )
 from fedcast.cast_models import MLPModel, LinearModel
 from flwr.common import Context
+from fedcast.federated_learning_strategies import build_fedprox_strategy
 
 # Define the Flower client
 class SinusClient(fl.client.NumPyClient):
@@ -79,25 +80,22 @@ def make_client_fn(model_builder):
         return SinusClient(cid=cid, model_builder=model_builder).to_client()
     return _client_fn
 
-# Define the strategy
-base_strategy = fl.server.strategy.FedAvg(
-    fraction_fit=1.0,  # Sample 100% of available clients for training
-    fraction_evaluate=1.0,  # Sample 100% of available clients for evaluation
-    min_fit_clients=2,  # Never sample less than 2 clients for training
-    min_evaluate_clients=2,  # Never sample less than 2 clients for evaluation
-    min_available_clients=2,  # Wait until all 2 clients are available
-)
-strategy = MLflowLoggingStrategy(base_strategy)
-
 def run_experiment_for_model(model_name: str, model_builder) -> None:
+    # Build strategy for this model run, using model-specific initial parameters
+    # Default to a strategy that requires no initial parameters and works with all models
+    base_strategy = build_fedprox_strategy()
+    strategy = MLflowLoggingStrategy(base_strategy, dataset_name="sinus")
+
+    strategy_name = type(base_strategy).__name__
+
     mlf_cfg = MLflowConfig(
         experiment_name="FedCast",
-        run_name=f"basic_fedavg_{model_name}",
-        tags={"strategy": "FedAvg", "dataset": "sinus", "model": model_name},
+        run_name=f"basic_{strategy_name}_{model_name}",
+        tags={"strategy": strategy_name, "dataset": "sinus", "model": model_name},
     )
     with start_run(mlf_cfg):
         log_params({
-            "strategy": "FedAvg",
+            "strategy": strategy_name,
             "num_rounds": 3,
             "num_clients": 2,
             "model": model_name,
