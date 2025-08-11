@@ -4,6 +4,13 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from collections import OrderedDict
 from fedcast.datasets.dataset_sinus import load_dataset, WINDOW_SIZE
+from fedcast.telemetry.mlflow_logger import (
+    MLflowConfig,
+    start_run,
+    log_params,
+    log_history_artifact,
+    MLflowLoggingStrategy,
+)
 
 # Define the neural network model
 class Net(nn.Module):
@@ -82,20 +89,34 @@ def client_fn(cid: str) -> fl.client.Client:
     return SinusClient(cid=cid).to_client()
 
 # Define the strategy
-strategy = fl.server.strategy.FedAvg(
+base_strategy = fl.server.strategy.FedAvg(
     fraction_fit=1.0,  # Sample 100% of available clients for training
     fraction_evaluate=1.0,  # Sample 100% of available clients for evaluation
     min_fit_clients=2,  # Never sample less than 2 clients for training
     min_evaluate_clients=2,  # Never sample less than 2 clients for evaluation
     min_available_clients=2,  # Wait until all 2 clients are available
 )
+strategy = MLflowLoggingStrategy(base_strategy)
 
 # Start the simulation
 if __name__ == "__main__":
-    fl.simulation.start_simulation(
-        client_fn=client_fn,
-        num_clients=2,
-        config=fl.server.ServerConfig(num_rounds=3),
-        strategy=strategy,
+    mlf_cfg = MLflowConfig(
+        experiment_name="FedCast",
+        run_name="basic_fedavg",
+        tags={"strategy": "FedAvg", "dataset": "sinus"},
     )
-    print("Federated learning simulation completed.") 
+    with start_run(mlf_cfg):
+        log_params({
+            "strategy": "FedAvg",
+            "num_rounds": 3,
+            "num_clients": 2,
+            "model": "MLP",
+        })
+        history = fl.simulation.start_simulation(
+            client_fn=client_fn,
+            num_clients=2,
+            config=fl.server.ServerConfig(num_rounds=3),
+            strategy=strategy,
+        )
+        log_history_artifact(history)
+        
