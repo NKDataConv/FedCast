@@ -26,6 +26,7 @@ from fedcast.federated_learning_strategies import (
     build_fedavg_strategy,
     build_partial_sampling_strategy,
     build_fedprox_strategy,
+    build_fedtrend_strategy,
 )
 from fedcast.telemetry.mlflow_logger import (
     MLflowLoggingStrategy,
@@ -176,6 +177,7 @@ def get_strategy_registry() -> Dict[str, Callable[[], any]]:
         "FedAvg": lambda: build_fedavg_strategy(),
         "PartialSampling": lambda: build_partial_sampling_strategy(),
         "FedProx": lambda: build_fedprox_strategy(),
+        "FedTrend": lambda: build_fedtrend_strategy(),
     }
 
 
@@ -235,5 +237,3 @@ def run_all_experiments(num_rounds: int = 3) -> None:
 
 if __name__ == "__main__":
     run_all_experiments(num_rounds=3)
-
-
