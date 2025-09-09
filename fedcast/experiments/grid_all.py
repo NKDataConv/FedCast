@@ -27,6 +27,7 @@ from fedcast.federated_learning_strategies import (
     build_partial_sampling_strategy,
     build_fedprox_strategy,
     build_fedtrend_strategy,
+    build_fedlama_strategy,
 )
 from fedcast.telemetry.mlflow_logger import (
     MLflowLoggingStrategy,
@@ -178,6 +179,7 @@ def get_strategy_registry() -> Dict[str, Callable[[], any]]:
         "PartialSampling": lambda: build_partial_sampling_strategy(),
         "FedProx": lambda: build_fedprox_strategy(),
         "FedTrend": lambda: build_fedtrend_strategy(),
+        "FedLAMA": lambda: build_fedlama_strategy(),
     }
 
 
