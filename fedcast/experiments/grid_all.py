@@ -28,6 +28,7 @@ from fedcast.federated_learning_strategies import (
     build_fedprox_strategy,
     build_fedtrend_strategy,
     build_fedlama_strategy,
+    build_fednova_strategy,
 )
 from fedcast.telemetry.mlflow_logger import (
     MLflowLoggingStrategy,
@@ -180,6 +181,7 @@ def get_strategy_registry() -> Dict[str, Callable[[], any]]:
         "FedProx": lambda: build_fedprox_strategy(),
         "FedTrend": lambda: build_fedtrend_strategy(),
         "FedLAMA": lambda: build_fedlama_strategy(),
+        "FedNova": lambda: build_fednova_strategy(),
     }
 
 
