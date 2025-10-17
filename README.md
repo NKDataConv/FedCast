@@ -212,4 +212,4 @@ Plots are saved in `runs/<experiment_name>/` directory.
 
 This project is supported by the Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR). We are grateful for their support, without which this project would not be possible.
 
-<img src="logo_bmftr.jpg" alt="BMFTR Logo" width=250>
+<img src="assets/logo_bmftr.jpg" alt="BMFTR Logo" width=250>
