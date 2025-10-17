@@ -1,0 +1,47 @@
+# Include important files
+include README.md
+include LICENSE
+include CONTRIBUTING.md
+include pyproject.toml
+
+# Include assets directory
+recursive-include assets *
+
+# Exclude data directory (large files not needed in package)
+exclude data/
+recursive-exclude data *
+
+# Exclude development and test files
+exclude tests/
+recursive-exclude tests *
+exclude venv/
+recursive-exclude venv *
+exclude .git/
+recursive-exclude .git *
+
+# Exclude build artifacts
+exclude dist/
+recursive-exclude dist *
+exclude build/
+recursive-exclude build *
+exclude *.egg-info/
+recursive-exclude *.egg-info *
+
+# Exclude IDE and editor files
+exclude .vscode/
+recursive-exclude .vscode *
+exclude .idea/
+recursive-exclude .idea *
+exclude *.swp
+exclude *.swo
+exclude *~
+
+# Exclude Python cache files
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * *.so
+recursive-exclude * .DS_Store
+
+# Exclude MLflow runs
+exclude mlruns/
+recursive-exclude mlruns *

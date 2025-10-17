@@ -1,7 +1,7 @@
 # FedCast: Federated Learning for Time Series Forecasting
 
 <p align="center">
-  <img src="assets/fedcast-logo.png" alt="FedCast Logo" width="100">
+  <img src="https://raw.githubusercontent.com/NKDataConv/FedCast/main/assets/fedcast-logo.png" alt="FedCast Logo" width="100">
 </p>
 
 FedCast is a comprehensive Python framework designed for time series forecasting using federated learning. It leverages the powerful [Flower (flwr)](https://flower.ai/) framework to enable privacy-preserving, decentralized model training on distributed time series data.
@@ -122,10 +122,16 @@ print(f"Final accuracy: {results['final_accuracy']}")
 
 ## Getting Started
 
-This project uses [Poetry](https://python-poetry.org/) for dependency management and packaging.
-
 ### Installation
 
+#### Option 1: Install from PyPI (Recommended)
+```bash
+pip install fedcast
+```
+
+> **Note**: FedCast is currently in **Beta** (v0.1.1b1). While the core functionality is stable, some features may still be under development. We welcome feedback and contributions!
+
+#### Option 2: Install from source
 1.  **Clone the repository:**
     ```bash
     git clone <repository-url>
@@ -133,10 +139,37 @@ This project uses [Poetry](https://python-poetry.org/) for dependency management
     ```
 
 2.  **Install dependencies:**
-    This command will create a virtual environment and install all necessary packages, including development dependencies like `pytest`.
+    This project uses [Poetry](https://python-poetry.org/) for dependency management and packaging.
     ```bash
     poetry install
     ```
+
+    Or install directly with pip:
+    ```bash
+    pip install -e .
+    ```
+
+## Quick Start
+
+After installation, you can start using FedCast:
+
+```python
+import fedcast
+from fedcast.datasets import load_sinus_dataset
+from fedcast.cast_models import MLPModel
+from fedcast.federated_learning_strategies import build_fedavg_strategy
+
+# Create a dataset
+dataset = load_sinus_dataset(partition_id=0)
+
+# Create a model
+model = MLPModel()
+
+# Create a federated learning strategy
+strategy = build_fedavg_strategy()
+
+# Your federated learning experiment here...
+```
 
 ## Development
 
@@ -212,4 +245,4 @@ Plots are saved in `runs/<experiment_name>/` directory.
 
 This project is supported by the Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR). We are grateful for their support, without which this project would not be possible.
 
-<img src="assets/logo_bmftr.jpg" alt="BMFTR Logo" width=250>
+<img src="https://raw.githubusercontent.com/NKDataConv/FedCast/main/assets/logo_bmftr.jpg" alt="BMFTR Logo" width=250>

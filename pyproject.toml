@@ -1,9 +1,28 @@
 [tool.poetry]
-name = "FedCast"
-version = "0.1.0"
-description = ""
-authors = []
+name = "fedcast"
+version = "0.1.1b1"
+description = "A modular framework for time series forecasting using federated learning, built on top of the Flower framework"
+authors = ["FedCast Team <nk@data-convolution.de>"]
 license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/NKDataConv/FedCast"
+repository = "https://github.com/NKDataConv/FedCast"
+documentation = "https://github.com/NKDataConv/FedCast#readme"
+keywords = ["federated-learning", "time-series", "forecasting", "machine-learning", "flower", "privacy"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 packages = [{include = "fedcast"}]
 
 [tool.poetry.dependencies]
