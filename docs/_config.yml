@@ -57,9 +57,8 @@ github_username: NKDataConv
 twitter_username: 
 
 # Author information
-author:
-  name: FedCast Team
-  email: nk@data-convolution.de
+author: FedCast Team
+email: nk@data-convolution.de
 
 # Site settings
 show_excerpts: true
