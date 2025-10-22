@@ -5,43 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-    {% if site.favicon %}
-    <link rel="icon" href="{{ site.favicon | relative_url }}">
-    {% endif %}
-
-    <link rel="canonical" href="{{ page.url | absolute_url }}">
-
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-
-    {% if page.layout == 'home' %}
-    <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
-    {% endif %}
-
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
 
     {% if jekyll.environment == 'production' and site.google_analytics %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ site.google_analytics }}');
-    </script>
+    {% include google-analytics.html %}
     {% endif %}
   </head>
 
   <body>
     <header class="site-header" role="banner">
       <div class="wrapper">
-        <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
-          <img src="{{ '/assets/fedcast-logo.png' | relative_url }}" alt="FedCast Logo" width="40" height="40">
-          {{ site.title | escape }}
-        </a>
-
+        <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
         <nav class="site-nav">
           <input type="checkbox" id="nav-trigger" class="nav-trigger" />
           <label for="nav-trigger">
@@ -53,10 +32,9 @@
           </label>
 
           <div class="trigger">
-            {% for item in site.navigation %}
-            <a class="page-link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-            {% endfor %}
-            <a class="page-link" href="https://github.com/NKDataConv/FedCast" target="_blank">GitHub</a>
+            <a class="page-link" href="{{ '/' | relative_url }}">Home</a>
+            <a class="page-link" href="https://github.com/NKDataConv/FedCast">GitHub</a>
+            <a class="page-link" href="https://pypi.org/project/fedcast/">PyPI</a>
           </div>
         </nav>
       </div>
@@ -72,44 +50,30 @@
       <data class="u-url" href="{{ '/' | relative_url }}"></data>
 
       <div class="wrapper">
+        <h2 class="footer-heading">{{ site.title | escape }}</h2>
+
         <div class="footer-col-wrapper">
           <div class="footer-col footer-col-1">
             <ul class="contact-list">
               <li class="p-name">
-                {% if site.author %}
-                  {{ site.author | escape }}
-                {% else %}
+                {%- if site.author -%}
+                  {{ site.author.name | escape }}
+                {%- else -%}
                   {{ site.title | escape }}
-                {% endif %}
+                {%- endif -%}
                 </li>
-                {% if site.email %}
+                {%- if site.email -%}
                 <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-                {% endif %}
+                {%- endif -%}
             </ul>
           </div>
 
           <div class="footer-col footer-col-2">
-            <ul class="social-media-list">
-              {% if site.github_username %}
-              <li>
-                <a href="https://github.com/{{ site.github_username }}" target="_blank">
-                  <svg class="svg-icon">
-                    <use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use>
-                  </svg>
-                  <span class="username">{{ site.github_username }}</span>
-                </a>
-              </li>
-              {% endif %}
-            </ul>
+            {%- include social.html -%}
           </div>
 
           <div class="footer-col footer-col-3">
             <p>{{ site.description | escape }}</p>
-            <p>
-              <small>
-                Licensed under the <a href="https://github.com/NKDataConv/FedCast/blob/main/LICENSE">Apache License 2.0</a>
-              </small>
-            </p>
           </div>
         </div>
       </div>

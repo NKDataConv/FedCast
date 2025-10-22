@@ -241,6 +241,12 @@ FedCast automatically generates plots for:
 Plots are saved in `runs/<experiment_name>/` directory.
 
 
+## Documentation
+
+- [Project Homepage](https://nkdataconv.github.io/FedCast) - GitHub Pages site
+- [GitHub Repository](https://github.com/NKDataConv/FedCast)
+- [PyPI Package](https://pypi.org/project/fedcast/)
+
 ## Supporters
 
 This project is supported by the Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR). We are grateful for their support, without which this project would not be possible.

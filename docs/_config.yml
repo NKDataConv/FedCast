@@ -1,11 +1,8 @@
-# Jekyll configuration for FedCast GitHub Pages
+# GitHub Pages Configuration for FedCast
 title: FedCast
-description: A modular framework for time series forecasting using federated learning, built on top of the Flower framework
-author: FedCast Team
-email: nk@data-convolution.de
-github_username: NKDataConv
-baseurl: "" # Leave empty for repository root
-url: "https://nkdataconv.github.io" # Your GitHub Pages URL
+description: Federated Learning for Time Series Forecasting
+url: "https://nkdataconv.github.io"
+baseurl: "/FedCast"
 
 # Build settings
 markdown: kramdown
@@ -17,9 +14,8 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# Exclude files from processing
+# Exclude from processing
 exclude:
-  - README.md
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -28,21 +24,48 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
 
+# Include files
+include:
+  - _pages
+
 # Collections
 collections:
   docs:
     output: true
     permalink: /:collection/:name/
 
-# Navigation
-navigation:
-  - title: Home
-    url: /
-  - title: Documentation
-    url: /docs/
-  - title: API Reference
-    url: /docs/api/
-  - title: Examples
-    url: /docs/examples/
-  - title: GitHub
-    url: https://github.com/NKDataConv/FedCast
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "default"
+
+# Social links
+github_username: NKDataConv
+twitter_username: 
+
+# Author information
+author:
+  name: FedCast Team
+  email: nk@data-convolution.de
+
+# Site settings
+show_excerpts: true
+paginate: 5
+paginate_path: "/page:num/"
+
+# SEO
+lang: en
+timezone: UTC
