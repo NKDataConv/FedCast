@@ -1,0 +1,48 @@
+# Jekyll configuration for FedCast GitHub Pages
+title: FedCast
+description: A modular framework for time series forecasting using federated learning, built on top of the Flower framework
+author: FedCast Team
+email: nk@data-convolution.de
+github_username: NKDataConv
+baseurl: "" # Leave empty for repository root
+url: "https://nkdataconv.github.io" # Your GitHub Pages URL
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Documentation
+    url: /docs/
+  - title: API Reference
+    url: /docs/api/
+  - title: Examples
+    url: /docs/examples/
+  - title: GitHub
+    url: https://github.com/NKDataConv/FedCast
