@@ -8,7 +8,6 @@ baseurl: "/FedCast"
 markdown: kramdown
 highlighter: rouge
 theme: minima
-remote_theme: jekyll/minima
 
 # Plugins
 plugins:
