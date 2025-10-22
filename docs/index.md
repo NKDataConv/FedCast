@@ -7,7 +7,7 @@ description: Federated Learning for Time Series Forecasting
 # FedCast: Federated Learning for Time Series Forecasting
 
 <div align="center">
-  <img src="../assets/fedcast-logo.png" alt="FedCast Logo" width="100">
+  <img src="https://raw.githubusercontent.com/NKDataConv/FedCast/main/assets/fedcast-logo.png" alt="FedCast Logo" width="100">
 </div>
 
 FedCast is a comprehensive Python framework designed for time series forecasting using federated learning. It leverages the powerful [Flower (flwr)](https://flower.ai/) framework to enable privacy-preserving, decentralized model training on distributed time series data.
@@ -144,7 +144,7 @@ mlflow ui --host 127.0.0.1 --port 5000
 This project is supported by the Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR).
 
 <div align="center">
-  <img src="../assets/logo_bmftr.jpg" alt="BMFTR Logo" width="250">
+  <img src="https://raw.githubusercontent.com/NKDataConv/FedCast/main/assets/logo_bmftr.jpg" alt="BMFTR Logo" width="250">
 </div>
 
 ## License
