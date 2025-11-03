@@ -24,25 +24,8 @@ Our tutorials are organized in three progressive levels to accommodate different
 |----------|-------------|--------|----------|
 | [1. Installation & Setup](01-installation.md) | Get FedCast installed and running | Markdown | 15 min |
 | [2. Your First Federated Experiment](02-first-experiment.md) | Run your first complete experiment | Notebook + Markdown | 30 min |
-| [3. Understanding FedCast Architecture](03-architecture.md) | Learn the framework's design principles | Markdown | 20 min |
 
-### 🟡 Intermediate Level
-
-| Tutorial | Description | Format | Duration |
-|----------|-------------|--------|----------|
-| [4. Working with Different Datasets](04-datasets.md) | Explore various time series datasets | Notebook | 45 min |
-| [5. Choosing Aggregation Strategies](05-strategies.md) | Compare federated learning strategies | Notebook + Markdown | 40 min |
-| [6. Custom Model Creation](06-custom-models.md) | Build your own neural network models | Notebook | 35 min |
-| [7. Monitoring with MLflow](07-mlflow.md) | Track experiments and analyze results | Markdown + Notebook | 25 min |
-
-### 🔴 Advanced Level
-
-| Tutorial | Description | Format | Duration |
-|----------|-------------|--------|----------|
-| [8. Implementing Custom Strategies](08-custom-strategies.md) | Create new aggregation strategies | Notebook + Script | 60 min |
-| [9. Personalization Techniques](09-personalization.md) | Advanced model personalization methods | Notebook | 50 min |
-| [10. Production Deployment](10-deployment.md) | Deploy FedCast in production | Markdown + Scripts | 45 min |
-| [11. Communication Efficiency Analysis](11-efficiency.md) | Optimize communication overhead | Notebook | 40 min |
+> **Coming Soon**: More tutorials are being developed. Check back regularly for updates!
 
 ## Learning Paths
 
@@ -52,27 +35,10 @@ Choose a learning path that matches your goals:
 Perfect for getting up and running quickly:
 1. [Installation & Setup](01-installation.md)
 2. [Your First Federated Experiment](02-first-experiment.md)
-3. [Working with Different Datasets](04-datasets.md)
 
-**Time**: ~1.5 hours | **Prerequisites**: Basic Python knowledge
+**Time**: ~45 minutes | **Prerequisites**: Basic Python knowledge
 
-### 🔬 Research Path
-Ideal for researchers and data scientists:
-1. [Understanding FedCast Architecture](03-architecture.md)
-2. [Choosing Aggregation Strategies](05-strategies.md)
-3. [Custom Model Creation](06-custom-models.md)
-4. [Monitoring with MLflow](07-mlflow.md)
-
-**Time**: ~2.5 hours | **Prerequisites**: Machine learning background
-
-### 🛠️ Advanced Development Path
-For developers building custom solutions:
-1. [Implementing Custom Strategies](08-custom-strategies.md)
-2. [Personalization Techniques](09-personalization.md)
-3. [Communication Efficiency Analysis](11-efficiency.md)
-4. [Production Deployment](10-deployment.md)
-
-**Time**: ~3.5 hours | **Prerequisites**: Deep learning and federated learning experience
+> **Note**: More tutorials are coming soon! Additional learning paths will be available as more tutorials are published.
 
 ## Format Legend
 

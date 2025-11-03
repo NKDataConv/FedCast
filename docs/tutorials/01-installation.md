@@ -255,15 +255,8 @@ Congratulations! You've successfully installed FedCast. Here's what you can do n
 
 ### For Beginners
 - **[Tutorial 2: Your First Federated Experiment](02-first-experiment.md)** - Run your first federated learning experiment
-- **[Tutorial 3: Understanding FedCast Architecture](03-architecture.md)** - Learn about the framework's design
 
-### For Researchers
-- **[Tutorial 4: Working with Different Datasets](04-datasets.md)** - Explore various time series datasets
-- **[Tutorial 5: Choosing Aggregation Strategies](05-strategies.md)** - Compare different federated learning strategies
-
-### For Developers
-- **[Tutorial 6: Custom Model Creation](06-custom-models.md)** - Build your own neural network models
-- **[Tutorial 8: Implementing Custom Strategies](08-custom-strategies.md)** - Create new aggregation strategies
+> **Coming Soon**: More tutorials are being developed covering architecture, datasets, strategies, and advanced topics. Check the [Tutorial Index](README.md) for updates!
 
 ## Additional Resources
 
@@ -274,4 +267,4 @@ Congratulations! You've successfully installed FedCast. Here's what you can do n
 
 ---
 
-**Ready to start your federated learning journey?** Continue to [Tutorial 2: Your First Federated Experiment](02-first-experiment.md) to run your first experiment!
+**Ready to start your federated learning journey?** Continue to [Tutorial 2: Your First Federated Experiment](02-first-experiment.md) to run your first complete federated learning experiment!
