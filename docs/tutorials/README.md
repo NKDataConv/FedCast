@@ -78,7 +78,7 @@ Perfect for getting up and running quickly:
 
 ### External Resources
 - **[Flower Documentation](https://flower.ai/docs/)** - Federated learning framework
-- **[MLflow Documentation](https://mlflow.org/docs/)** - Experiment tracking
+- **[MLflow Documentation](https://mlflow.org/docs/latest/)** - Experiment tracking
 - **[PyTorch Tutorials](https://pytorch.org/tutorials/)** - Deep learning fundamentals
 
 ## Tutorial Updates

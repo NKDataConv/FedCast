@@ -565,7 +565,7 @@ Congratulations! You've completed your first federated learning experiment. Here
 
 - **[FedCast Documentation](../index.md)** - Complete framework documentation
 - **[Flower Framework Docs](https://flower.ai/docs/)** - Underlying framework details
-- **[MLflow Documentation](https://mlflow.org/docs/)** - Advanced tracking features
+- **[MLflow Documentation](https://mlflow.org/docs/latest/)** - Advanced tracking features
 
 ---
 

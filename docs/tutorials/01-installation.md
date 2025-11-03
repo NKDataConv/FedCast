@@ -263,7 +263,7 @@ Congratulations! You've successfully installed FedCast. Here's what you can do n
 - **[FedCast Documentation](../index.md)** - Complete framework documentation
 - **[GitHub Repository](https://github.com/NKDataConv/FedCast)** - Source code and issue tracking
 - **[Flower Framework](https://flower.ai/)** - Underlying federated learning framework
-- **[MLflow Documentation](https://mlflow.org/docs/latest/index.html)** - Experiment tracking guide
+- **[MLflow Documentation](https://mlflow.org/docs/latest/)** - Experiment tracking guide
 
 ---
 
