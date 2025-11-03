@@ -103,7 +103,7 @@ New to FedCast? Start with our comprehensive tutorial series:
 
 - **[📚 Tutorial 1: Installation & Setup](tutorials/01-installation.md)** - Get FedCast running on your system
 - **[🚀 Tutorial 2: Your First Federated Experiment](tutorials/02-first-experiment.md)** - Run your first experiment
-- **[📖 All Tutorials](tutorials/)** - Complete learning path from beginner to advanced
+- **[📖 All Tutorials](tutorials/README.md)** - Complete learning path from beginner to advanced
 
 ### Development Setup
 
@@ -143,7 +143,7 @@ mlflow ui --host 127.0.0.1 --port 5000
 
 ## Documentation
 
-- **[Tutorials](tutorials/)** - Step-by-step learning guides
+- **[Tutorials](tutorials/README.md)** - Step-by-step learning guides
 - [GitHub Repository](https://github.com/NKDataConv/FedCast)
 - [PyPI Package](https://pypi.org/project/fedcast/)
 - [Flower Framework](https://flower.ai/)
