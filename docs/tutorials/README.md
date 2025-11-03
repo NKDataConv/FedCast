@@ -53,13 +53,9 @@ Perfect for getting up and running quickly:
 
 ### Documentation
 - **[Main Documentation](../index.md)** - Complete framework overview
-- **[API Reference](../api/)** - Detailed API documentation
-- **[Examples](../examples/)** - Code examples and use cases
 
 ### Community
 - **[GitHub Issues](https://github.com/NKDataConv/FedCast/issues)** - Bug reports and feature requests
-- **[GitHub Discussions](https://github.com/NKDataConv/FedCast/discussions)** - Community support and questions
-- **[Flower Community](https://flower.ai/community/)** - Underlying framework support
 
 ### External Resources
 - **[Flower Documentation](https://flower.ai/docs/)** - Federated learning framework
@@ -76,7 +72,7 @@ These tutorials are regularly updated to reflect the latest FedCast features and
 
 ## Contributing to Tutorials
 
-We welcome contributions to improve these tutorials! Please see our [Contributing Guide](../../CONTRIBUTING.md) for details on how to:
+We welcome contributions to improve these tutorials! Please see our [Contributing Guide](https://github.com/NKDataConv/FedCast/blob/main/CONTRIBUTING.md) for details on how to:
 
 - Report tutorial issues
 - Suggest improvements
