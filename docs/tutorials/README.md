@@ -8,17 +8,7 @@ description: Comprehensive tutorials for learning federated time series forecast
 
 Welcome to the FedCast tutorial series! These tutorials are designed to guide you from basic concepts to advanced implementations of federated learning for time series forecasting.
 
-## Tutorial Structure
-
-Our tutorials are organized in three progressive levels to accommodate different learning goals and experience levels:
-
-- **🟢 Beginner Level**: Get started with FedCast and understand the basics
-- **🟡 Intermediate Level**: Explore advanced features and customization
-- **🔴 Advanced Level**: Implement custom solutions and production deployment
-
 ## Quick Navigation
-
-### 🟢 Beginner Level
 
 | Tutorial | Description | Format | Duration |
 |----------|-------------|--------|----------|
@@ -58,11 +48,6 @@ Perfect for getting up and running quickly:
 - Basic machine learning knowledge
 - Understanding of neural networks
 - Experience with PyTorch or TensorFlow (helpful)
-
-### For Advanced Tutorials
-- Deep learning experience
-- Understanding of federated learning concepts
-- Experience with distributed systems (helpful)
 
 ## Getting Help
 
